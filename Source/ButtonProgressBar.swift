@@ -140,6 +140,7 @@ public class ButtonProgressBar: UIButton {
         self.hideImage(true)
         self.hideTitle(false)
         self.setProgress(progress: 0.0, false)
+        self.progressLayer.removeAllAnimations()
     }
     
     override public func layoutSubviews() {
