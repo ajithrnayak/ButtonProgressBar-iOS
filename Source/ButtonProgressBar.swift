@@ -1,24 +1,24 @@
 /*
-Copyright (c) 2017 Pushkar Sharma <thePsguy@icloud.com>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
-*/
+ Copyright (c) 2017 Pushkar Sharma <thePsguy@icloud.com>
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ */
 
 import UIKit
 
@@ -37,7 +37,7 @@ public class ButtonProgressBar: UIButton {
     
     /**
      Initialize programmaticaly just like you would any other UIButton.
-    */
+     */
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -52,9 +52,9 @@ public class ButtonProgressBar: UIButton {
         imageView?.contentMode = .center
         imageView?.tintColor = .white
         self.hideImage(true)
-
+        
         let rectanglePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
-
+        
         progressLayer.path = rectanglePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
         progressLayer.strokeColor = progressColor.cgColor
@@ -100,7 +100,7 @@ public class ButtonProgressBar: UIButton {
      Used to handle indeterminate loading.
      - Parameter timePeriod (optional): The total time (animation + padding, default 2.0) that 1 cycle of the loading takes.
      - Parameter timePadding (optional): The duration (default 0.5), in seconds, before starting the next cycle.
-    */
+     */
     public func startIndeterminate(withTimePeriod time: TimeInterval = 2.0, andTimePadding padding: TimeInterval = 0.5) {
         timer?.invalidate()
         self.resetProgress()
@@ -127,7 +127,7 @@ public class ButtonProgressBar: UIButton {
     
     /**
      Stop indeterminate loading.
-    */
+     */
     public func stopIndeterminate() {
         timer?.invalidate()
     }
@@ -135,7 +135,7 @@ public class ButtonProgressBar: UIButton {
     /**
      Reset progress to 0.0 unanimated.
      See `setProgress(progress:,animated:)` to set progress animated.
-    */
+     */
     public func resetProgress() {
         self.hideImage(true)
         self.hideTitle(false)
@@ -154,7 +154,7 @@ public class ButtonProgressBar: UIButton {
      Set the absolute progress value.
      - Parameter progreaa: Ranges from 0.0 to 1.0
      - Parameter animated: If true, linearly animates to target progress value.
-    */
+     */
     public func setProgress(progress: CGFloat, _ animated: Bool) {
         if !animated {
             progressLayer.strokeEnd = progress / 2
@@ -172,8 +172,8 @@ public class ButtonProgressBar: UIButton {
     }
     
     /**
-        Set title label text.
-    */
+     Set title label text.
+     */
     public override func setTitle(_ title: String?, for state: UIControl.State) {
         super.setTitle(title, for: state)
     }
@@ -209,7 +209,7 @@ public class ButtonProgressBar: UIButton {
     /**
      Stop indeterminate loading if active, set progress to 1.0 animated, and display completion checkmark.
      Needs to be called explicitly when loading determinate as well.
-    */
+     */
     public func triggerCompletion() {
         self.stopIndeterminate()
         self.setProgress(progress: 1.0, true)
@@ -223,7 +223,7 @@ public class ButtonProgressBar: UIButton {
      - Parameter image: UIImage to be shown on completion.
      
      NOTE: This image must be set. No default exists.
-    */
+     */
     
     public func setCompletionImage(image: UIImage) {
         self.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -231,12 +231,12 @@ public class ButtonProgressBar: UIButton {
     
     /**
      Set progress layer color.
-    */
+     */
     public func setProgressColor(color: UIColor) {
         self.progressColor = color
         self.progressLayer.strokeColor = color.cgColor
     }
-
+    
     /**
      Set button background color.
      */
